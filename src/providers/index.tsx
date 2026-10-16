@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import QueryProvider from "./query.provider";
 import GoogleAuthProvider from "./google-auth.provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "./theme-provider";
 
 export default function Providers({ children }: { children: ReactNode }) {
   return (

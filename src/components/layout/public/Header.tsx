@@ -1,6 +1,7 @@
 "use client";
 
 import Logo from "@/assets/svg/Logo";
+import ModeToggle from "@/components/ModeToggle/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
 import { useGetMe, useLogout } from "@/hooks";
@@ -66,7 +67,8 @@ export default function Header() {
           ))}
           {role && <Link href={dashboardRoute[role]}>Dashboard</Link>}
         </nav>
-        <div>
+        <div className="flex gap-3">
+          <ModeToggle />
           {!isLoading && !data && (
             <Button
               variant="outline"
