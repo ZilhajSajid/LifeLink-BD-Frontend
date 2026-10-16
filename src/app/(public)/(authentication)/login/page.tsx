@@ -21,12 +21,13 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
-      <div className="relative hidden bg-muted lg:block">
+      <div className="relative hidden overflow-hidden bg-muted lg:block">
         <img
           src="/login.png"
           alt="loginImg"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          className="absolute inset-0 h-full w-full object-cover"
         />
+        <div className="absolute inset-0 bg-transparent dark:bg-slate-950/25" />
       </div>
     </div>
   );
