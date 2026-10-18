@@ -1,4 +1,4 @@
-const prefix = "/requester";
+const prefix = "/dashboard";
 
 export const requesterRoutes = [
   {
@@ -9,8 +9,8 @@ export const requesterRoutes = [
         url: `${prefix}/create-request`,
       },
       {
-        title: "My Payments",
-        url: `${prefix}`,
+        title: "My Requests",
+        url: `${prefix}/my-requests`,
       },
     ],
   },

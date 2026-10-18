@@ -5,3 +5,4 @@ export * from "./sidebar.type";
 export * from "./api.type";
 export * from "./donation.type";
 export * from "./requester.type";
+export * from "./request-list-type";

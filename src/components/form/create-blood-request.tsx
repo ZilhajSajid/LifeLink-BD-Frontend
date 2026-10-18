@@ -188,27 +188,39 @@ export default function CreateBloodRequestForm() {
                     : undefined,
             }}
           >
-            {(field) => (
-              <div>
-                <label className={labelClass} htmlFor={field.name}>
-                  Required Date & Time *
-                </label>
-                <input
-                  id={field.name}
-                  className={inputClass}
-                  type="datetime-local"
-                  required
-                  value={field.state.value}
-                  onBlur={field.handleBlur}
-                  onChange={(event) => field.handleChange(event.target.value)}
-                />
-                {field.state.meta.errors.length > 0 && (
-                  <p className="mt-1 text-sm text-destructive">
-                    {field.state.meta.errors.join(", ")}
-                  </p>
-                )}
-              </div>
-            )}
+            {(field) => {
+              const now = new Date();
+              const minDateTime = new Date(
+                now.getTime() - now.getTimezoneOffset() * 60_000,
+              )
+                .toISOString()
+                .slice(0, 16);
+
+              return (
+                <div>
+                  <label className={labelClass} htmlFor={field.name}>
+                    Required Date & Time *
+                  </label>
+
+                  <input
+                    id={field.name}
+                    className={inputClass}
+                    type="datetime-local"
+                    min={minDateTime}
+                    required
+                    value={field.state.value}
+                    onBlur={field.handleBlur}
+                    onChange={(event) => field.handleChange(event.target.value)}
+                  />
+
+                  {field.state.meta.errors.length > 0 && (
+                    <p className="mt-1 text-sm text-destructive">
+                      {field.state.meta.errors.join(", ")}
+                    </p>
+                  )}
+                </div>
+              );
+            }}
           </form.Field>
 
           <form.Field name="hospitalName">

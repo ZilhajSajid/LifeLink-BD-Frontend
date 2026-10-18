@@ -20,7 +20,7 @@ export default function Header() {
     SUPER_ADMIN: "/admin",
     ADMIN: "/admin",
     DONOR: "/donor",
-    REQUESTER: "/requester",
+    REQUESTER: "/dashboard",
   };
 
   const { data, isLoading } = useGetMe();
