@@ -1,3 +1,3 @@
 export default function RequesterPage() {
-  return <div>Requester Page</div>;
+  return <div>Requester Dashboard</div>;
 }
