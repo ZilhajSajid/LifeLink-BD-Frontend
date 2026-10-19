@@ -21,6 +21,24 @@ import GoogleLoginComponent from "../modules/google-login/GoogleLogin";
 import Link from "next/link";
 
 export default function LoginForm() {
+  const testerCredentials = {
+    admin: {
+      email: process.env.NEXT_PUBLIC_TESTER_ADMIN_EMAIL ?? "",
+      password: process.env.NEXT_PUBLIC_TESTER_ADMIN_PASSWORD ?? "",
+    },
+    donor: {
+      email: process.env.NEXT_PUBLIC_TESTER_DONOR_EMAIL ?? "",
+      password: process.env.NEXT_PUBLIC_TESTER_DONOR_PASSWORD ?? "",
+    },
+  };
+
+  const handleQuickLogin = (role: "admin" | "donor") => {
+    const credentials = testerCredentials[role];
+
+    form.setFieldValue("email", credentials.email);
+    form.setFieldValue("password", credentials.password);
+  };
+
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
@@ -28,8 +46,8 @@ export default function LoginForm() {
 
   const form = useForm({
     defaultValues: {
-      email: "bohish@gmail.com",
-      password: "q!tXh!5?G6",
+      email: "",
+      password: "",
     },
     validators: {
       onSubmit: LoginSchema,
@@ -140,6 +158,28 @@ export default function LoginForm() {
           <Button disabled={loginPending} type="submit">
             {loginPending ? <Spinner /> : "Submit"}
           </Button>
+
+          <div className="grid grid-cols-2 gap-3">
+            <Button
+              type="button"
+              variant="outline"
+              disabled={loginPending}
+              onClick={() => handleQuickLogin("admin")}
+              className="w-full"
+            >
+              Login as Admin
+            </Button>
+
+            <Button
+              type="button"
+              variant="outline"
+              disabled={loginPending}
+              onClick={() => handleQuickLogin("donor")}
+              className="w-full"
+            >
+              Login as Donor
+            </Button>
+          </div>
         </FieldGroup>
       </form>
       <FieldSeparator>Or Continue with</FieldSeparator>
